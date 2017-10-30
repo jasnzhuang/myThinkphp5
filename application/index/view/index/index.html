@@ -1,0 +1,21 @@
+<html>
+<head>
+<title></title>
+<link rel="stylesheet" href="../static/style/style.css">
+</head>
+<body>
+
+	<div class="container">
+		<div class="dataTable">
+			<ul>
+				<li class="colName colLi">id</li>
+				<li class="colName colLi">name</li>
+				{volist name="result" id="result" }
+				<li class="itemFront colLi">{$result.id}</li>
+				<li class="itemEnd colLi">{$result.data}</li>
+				{/volist}
+			</ul>
+		</div>
+	</div>
+</body>
+</html>
