@@ -1,0 +1,35 @@
+/*
+* @Author: Jason
+* @Date:   2017-10-30 17:30:34
+* @Last Modified by:   Jason
+* @Last Modified time: 2017-10-30 17:30:37
+*/
+	body{
+		margin:0px;
+		padding:0px;
+	}
+	ul{
+		list-style-type: none;
+	}
+	li{
+		    display: block;
+		    border-bottom: 1px solid green;
+	}
+	.container{
+		width: 400px;
+		height: 200px;
+		background-color: grey;
+		margin: 0px auto;
+	}
+	.dataTable{
+		width: 300px;
+		height: 150px;
+		background-color: white;
+		margin: 0px auto;
+	}
+	.colLi{
+		float: left;
+		width: 130px;
+		height: 28px;
+		text-align: center;
+	}
