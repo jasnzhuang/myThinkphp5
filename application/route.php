@@ -31,6 +31,7 @@ return [
 	'user/add/' => 'index/user/add',
 	'user/addadd' => 'index/user/addadd',
 	'user/add_list' => 'index/user/addList',
+	'user/edit/:id' => 'index/user/edit',
 	'user/update/:id' => 'index/user/update',
 	'user/delete/:id' => 'index/user/delete',
 	'user/:id' => 'index/user/read',
