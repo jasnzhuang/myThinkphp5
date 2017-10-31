@@ -32,7 +32,7 @@ return [
 	'user/addadd' => 'index/user/addadd',
 	'user/add_list' => 'index/user/addList',
 	'user/edit/:id' => 'index/user/edit',
-	'user/update/:id' => 'index/user/update',
+	'user/update/:id' => 'index/user/update?id=:id',
 	'user/delete/:id' => 'index/user/delete',
 	'user/:id' => 'index/user/read',
 	'user' => 'index/user/index',

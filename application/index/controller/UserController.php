@@ -41,83 +41,96 @@ class UserController extends Controller
 
 	// 注意和上面注释掉的部分的对比，上面的说白了就是直接把操作值写在了控制器里
 	// 下面的呢，就是通过use了request，从而能够获取到post过来的值
-public function add(Request $request)
-{
-	$user = new User;
-	$user->nickname = $request->post('nickname');
-	$user->email = $request->post('email');
-	$user->birthday = strtotime($request->post('birthday'));
-	if ($user->save()) {
-		return '用户[ ' . $user->nickname . ':' . $user->id . ' ]新增成功';
-	} else {
-		return $user->getError();
+	public function add(Request $request)
+	{
+		$user = new User;
+		$user->nickname = $request->post('nickname');
+		$user->email = $request->post('email');
+		$user->birthday = strtotime($request->post('birthday'));
+		if ($user->save()) {
+			return '用户[ ' . $user->nickname . ':' . $user->id . ' ]新增成功';
+		} else {
+			return $user->getError();
+		}
 	}
-}
 
 	// 新增用户数据
-public function addadd()
-{
-	$user['nickname'] = '看云';
-	$user['email'] = 'kancloud@qq.com';
-	$user['birthday'] = strtotime('2015-04-02');
-	if ($result = User::create($user)) {
-		return '用户[ ' . $result->nickname . ':' . $result->id . ' ]新增成功';
-	} else {
-		return '新增出错';
+	public function addadd()
+	{
+		$user['nickname'] = '看云';
+		$user['email'] = 'kancloud@qq.com';
+		$user['birthday'] = strtotime('2015-04-02');
+		if ($result = User::create($user)) {
+			return '用户[ ' . $result->nickname . ':' . $result->id . ' ]新增成功';
+		} else {
+			return '新增出错';
+		}
 	}
-}
 
 	// 批量新增用户数据
 	//因为addList中是大写的L，所以请使用http://aajz.cn/user/add_list来执行该方法
-public function addList()
-{
-	$user = new User;
-	$list = [
-		['nickname' => '张三', 'email' => 'zhanghsan@qq.com', 'birthday' => strtotime('1988-01-15')],
-		['nickname' => '李四', 'email' => 'lisi@qq.com', 'birthday' => strtotime('1990-09-19')],
-	];
-	if ($user->saveAll($list)) {
-		return '用户批量新增成功';
-	} else {
-		return $user->getError();
+	public function addList()
+	{
+		$user = new User;
+		$list = [
+			['nickname' => '张三', 'email' => 'zhanghsan@qq.com', 'birthday' => strtotime('1988-01-15')],
+			['nickname' => '李四', 'email' => 'lisi@qq.com', 'birthday' => strtotime('1990-09-19')],
+		];
+		if ($user->saveAll($list)) {
+			return '用户批量新增成功';
+		} else {
+			return $user->getError();
+		}
 	}
-}
 
 
 	// 读取用户数据
-public function read($id='')
-{
-	$user = User::get($id);
-	echo $user->nickname . '<br/>';
-	echo $user->email . '<br/>';
+	public function read($id='')
+	{
+		$user = User::get($id);
+		echo $user->nickname . '<br/>';
+		echo $user->email . '<br/>';
 		//因为模型里面应用了读取器，所以不用在这里转换日期显示的数据格式了
 		// echo date('Y/m/d', $user->birthday) . '<br/>';
-	echo $user->birthday . '<br/>';
-}
+		echo $user->birthday . '<br/>';
+	}
 
 
 
 
 	// 修改前显示用户数据
-public function edit($id)
-{
-	$user = User::get($id);
-	$this->assign('nickname', $user->nickname);
-	$this->assign('email', $user->email);
-	$this->assign('birthday', $user->birthday);
-	return $this->fetch();
+	public function edit($id)
+	{
+		$user = User::get($id);
+		$this->assign('id', $user->id);
+		$this->assign('nickname', $user->nickname);
+		$this->assign('email', $user->email);
+		$this->assign('birthday', $user->birthday);
+		return $this->fetch();
 
-}
+	}
+
+	// 直接把修改值写在控制器里面来进行指定id的更新
+	// 更新用户数据
+	// public function update($id)
+	// {
+	// 	$user = UserModel::get($id);
+	// 	$user->nickname = '刘晨';
+	// 	$user->email = 'liu21st@gmail.com';
+	// 	$user->save();
+	// 	return '更新用户成功';
+	// }
 
 	// 确认修改后更新用户数据
-public function update(Request $request)
-{
-	$user = User::get($request->post('id'));
-	$user['nickname'] =$request->post('nickname');
-	$user['email'] = $request->post('email');
-	User::update($user);
-	return '更新用户成功';
-}
+	public function update(Request $request,$id)
+	{
+		$user = User::get($id);
+		$user->nickname =$request->post('nickname');
+		$user->email = $request->post('email');
+		$user->birthday =strtotime($request->post('birthday'));
+		$user->save();
+		return '更新用户成功';
+	}
 
 	// // 删除用户数据
 	// public function delete($id)
@@ -132,13 +145,13 @@ public function update(Request $request)
 	// }
 
 	// 删除用户数据
-public function delete($id)
-{
-	$result = User::destroy($id);
-	if ($result) {
-		return '删除用户成功';
-	} else {
-		return '删除的用户不存在';
+	public function delete($id)
+	{
+		$result = User::destroy($id);
+		if ($result) {
+			return '删除用户成功';
+		} else {
+			return '删除的用户不存在';
+		}
 	}
-}
 }

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<form action="/user/update/{$id}" method="post">
+	<label for="nickname">姓名</label>
+	<input type="text" name="nickname" id="nickname" value="{$nickname}"><br>
+	<label for="email">邮箱地址</label>
+	<input type="text" name="email" id="email" value="{$email}"><br>
+	<label for="birthday">生日（格式必须为：1999-9-29）</label>
+	<input type="text" name="birthday" id="birthday" value="{$birthday}"><br>
+	
+		<input type="submit" value="进入编辑窗口">
+	</form>
+</body>
+</html>
