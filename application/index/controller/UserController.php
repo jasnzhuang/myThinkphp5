@@ -15,12 +15,13 @@ class UserController extends Controller
 	public function index()
 	{
 		// 这句是输出全部
-		$list = User::all();
+		//$list = User::all();
 		// 这句还是全部输出，但是每3个分页
 		$list = User::paginate(3);
 		$this->assign('list', $list);
 		$this->assign('count', count($list));
 		return $this->fetch();
+
 	}
 
 
