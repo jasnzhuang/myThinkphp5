@@ -2,9 +2,10 @@
 namespace app\index\controller;
 
 use app\index\model\User;
+use app\index\model\Classes;
 use think\Request;
 use think\Controller;
-
+use think\Db;
 
 // 注意这里，简单说来就是如果想要用view的模板页面输出
 // 就必须让这个控制器类extends Controller
@@ -17,14 +18,27 @@ class UserController extends Controller
 		// 这句是输出全部
 		//$list = User::all();
 		// 这句还是全部输出，但是每3个分页
-		$list = User::paginate(3);
-		$this->assign('list', $list);
-		$this->assign('count', count($list));
-		return $this->fetch();
+		// $list = User::paginate(3);
+		// $this->assign('list', $list);
+		// $this->assign('count', count($list));
+		// return $this->fetch();
 
+		// 这里演示一下如何使用join的方式查询数据库，User::后面紧跟的View
+		// 说白了就是生成了一个临时视图
+		$list = Db::view('user','id,nickname,email,birthday')
+		->view('classes',['year,major,subclass'],'classes.id=user.classes')
+		->paginate(3);
+		$this->assign('list',$list);
+		return $this->fetch();
 	}
 
 
+	public function add()
+	{
+		$list = Classes::all();
+		$this->assign('list', $list);
+		return $this->fetch();
+	}
 
 	// 新增用户数据
 	// public function add()
@@ -42,12 +56,13 @@ class UserController extends Controller
 
 	// 注意和上面注释掉的部分的对比，上面的说白了就是直接把操作值写在了控制器里
 	// 下面的呢，就是通过use了request，从而能够获取到post过来的值
-	public function add(Request $request)
+	public function adddo(Request $request)
 	{
 		$user = new User;
 		$user->nickname = $request->post('nickname');
 		$user->email = $request->post('email');
 		$user->birthday = strtotime($request->post('birthday'));
+		$user->classes = $request->post('classes');
 		if ($user->save()) {
 			return '用户[ ' . $user->nickname . ':' . $user->id . ' ]新增成功';
 		} else {
@@ -89,11 +104,18 @@ class UserController extends Controller
 	public function read($id='')
 	{
 		$user = User::get($id);
-		echo $user->nickname . '<br/>';
-		echo $user->email . '<br/>';
+		if ($user) {
+			echo $user->nickname . '<br/>';
+			echo $user->email . '<br/>';
 		//因为模型里面应用了读取器，所以不用在这里转换日期显示的数据格式了
 		// echo date('Y/m/d', $user->birthday) . '<br/>';
-		echo $user->birthday . '<br/>';
+			echo $user->birthday . '<br/>';
+			echo $user->classes . '<br/>';
+		} else {
+			echo "查无此狗";
+		}
+		
+		
 	}
 
 

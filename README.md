@@ -11,7 +11,7 @@ create the project
 2. 	再出现的窗口里面输入
 `git clone https://github.com/jasnzhuang/mythinkphp5.git thinkphp5`
 上面这句话翻译一下就是这样
-江崟才！ 去他妈给我拿个文件回来！ 地址是！ 拿来以后给我放在这里！
+淫才！ 去拿个文件回来！ 地址是！ 拿来以后给我放在这里！
 如果你操作成功了，那么就会在wwwroot里面出现一个thinkphp5的文件夹
 里面就是从我的github上clone回来的整个mythinkphp5项目的文件
 

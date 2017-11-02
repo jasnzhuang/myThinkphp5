@@ -5,11 +5,16 @@
 	<title>Document</title>
 </head>
 <body>
-	<form action="/user/add" method="post">
+	<form action="/user/adddo" method="post">
 		<input type="text" name="nickname" id="nickname">
 		<input type="text" name="email" id="email">
 		<input type="text" name="birthday" id="birthday">
 		<input type="submit" value="put it in!">
+		<select name="classes" id="classes">
+			{volist name="list" id="classes"}
+			<option value="{$classes.id}">{$classes.year.$classes.major.$classes.subclass}</option>
+			{/volist}
+		</select>
 	</form>
 </body>
 </html>

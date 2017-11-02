@@ -29,6 +29,8 @@ return [
 	'user/create' => 'index/user/create',
 	'user/add' => 'index/user/add',
 	'user/add/' => 'index/user/add',
+	'user/adddo' => 'index/user/adddo',
+	'user/adddo/' => 'index/user/adddo',
 	'user/addadd' => 'index/user/addadd',
 	'user/add_list' => 'index/user/addList',
 	'user/edit/:id' => 'index/user/edit',
@@ -36,5 +38,6 @@ return [
 	'user/delete/:id' => 'index/user/delete',
 	'user/:id' => 'index/user/read',
 	'user' => 'index/user/index',
+	'user/page/:page' => 'index/user/index?page=:page',
 
 ];
