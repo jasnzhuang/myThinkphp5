@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" href="/static/bootstrap/css/bootstrap.min.css" />
+</head>
+<body>
+	<h2>用户列表（{$blogs->total()}）</h2>
+		{volist name="blogs" id="blog"}
+			name：{$blog.name}<br/>
+			title：<a href="/blog/{$blog.id}">{$blog.title}</a><br/>
+			content.data：{$blog->content->data}<br/>
+			<a href="/blog/edit/{$blog.id}">编辑</a>
+			&nbsp;&nbsp;&nbsp;&nbsp;
+			<a href="/blog/delete/{$blog.id}">删除</a><br>
+			------------------------<br/>
+		{/volist}
+	{$blogs->render()}
+	</body>
+	</html>

@@ -40,6 +40,11 @@ return [
 	'user' => 'index/user/index',
 	'user/page/:page' => 'index/user/index?page=:page',
 	'blog/add' => 'blog/index/add',
+	'blog/adddo' => 'blog/index/adddo',
+	'blog/:id' => 'blog/index/read',
+	'blog/edit/:id' => 'blog/index/edit',
+	'blog/update/:id' => 'blog/index/update?id=:id',
+	'blog/delete/:id' => 'blog/index/delete',
 	'blog/user/:id' => 'blog/index/user?id=:id',
 
 ];

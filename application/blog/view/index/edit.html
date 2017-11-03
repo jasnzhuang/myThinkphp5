@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+
+	<form action="/blog/update/{$blog.id}" method="post">
+		<h3>name:</h3><input type="text" name="blogname" id="blogname" value="{$blog.name}"><br>
+		<h3>title:</h3><input type="text" name="blogtitle" id="blogtitle" value="{$blog.title}"><br>
+		<h3>content:</h3><textarea name="contentdata" id="contentdata" cols="30" rows="10">{$blog->content->data}</textarea><br>
+		<input type="submit" value="Edit it!">
+	</form>
+</body>
+</html>
