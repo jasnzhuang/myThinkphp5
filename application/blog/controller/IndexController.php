@@ -21,13 +21,13 @@ class IndexController extends Controller
 		}
 	}
 
-	public function add(){
+	public function add(Request $request){
 		$blog = new Blog;
-		$blog->name = 'thinkphp';
-		$blog->title = 'ThinkPHP5关联实例';
+		$blog->name = $request->post('name');
+		$blog->title = $request->post('title');
 		if ($blog->save()) {
 			$content = new Content;
-			$content->data = '实例内容';
+			$content->data = $request->post('data');
 			if($blog->content()->save($content)){
 				echo "OK!";
 			}else{
