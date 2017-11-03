@@ -22,12 +22,12 @@ class UserController extends Controller
 		// $this->assign('list', $list);
 		// $this->assign('count', count($list));
 		// return $this->fetch();
-
+		$list = User::paginate(3);
 		// 这里演示一下如何使用join的方式查询数据库，User::后面紧跟的View
 		// 说白了就是生成了一个临时视图
-		$list = Db::view('user','id,nickname,email,birthday')
-		->view('classes',['year,major,subclass'],'classes.id=user.classes')
-		->paginate(3);
+		// $list = Db::view('user','id,nickname,email,birthday')
+		// ->view('classes',['year,major,subclass'],'classes.id=user.classes_id')
+		// ->paginate(3);
 		$this->assign('list',$list);
 		return $this->fetch();
 	}
@@ -61,8 +61,8 @@ class UserController extends Controller
 		$user = new User;
 		$user->nickname = $request->post('nickname');
 		$user->email = $request->post('email');
-		$user->birthday = strtotime($request->post('birthday'));
-		$user->classes = $request->post('classes');
+		$user->birthday = $request->post('birthday');
+		$user->classes_id = $request->post('classes_id');
 		if ($user->save()) {
 			return '用户[ ' . $user->nickname . ':' . $user->id . ' ]新增成功';
 		} else {
@@ -70,18 +70,18 @@ class UserController extends Controller
 		}
 	}
 
-	// 新增用户数据
-	public function addadd()
-	{
-		$user['nickname'] = '看云';
-		$user['email'] = 'kancloud@qq.com';
-		$user['birthday'] = strtotime('2015-04-02');
-		if ($result = User::create($user)) {
-			return '用户[ ' . $result->nickname . ':' . $result->id . ' ]新增成功';
-		} else {
-			return '新增出错';
-		}
-	}
+	// // 新增用户数据
+	// public function addadd()
+	// {
+	// 	$user['nickname'] = '看云';
+	// 	$user['email'] = 'kancloud@qq.com';
+	// 	$user['birthday'] = strtotime('2015-04-02');
+	// 	if ($result = User::create($user)) {
+	// 		return '用户[ ' . $result->nickname . ':' . $result->id . ' ]新增成功';
+	// 	} else {
+	// 		return '新增出错';
+	// 	}
+	// }
 
 	// 批量新增用户数据
 	//因为addList中是大写的L，所以请使用http://aajz.cn/user/add_list来执行该方法
@@ -110,7 +110,7 @@ class UserController extends Controller
 		//因为模型里面应用了读取器，所以不用在这里转换日期显示的数据格式了
 		// echo date('Y/m/d', $user->birthday) . '<br/>';
 			echo $user->birthday . '<br/>';
-			echo $user->classes . '<br/>';
+			echo $user->classes_id . '<br/>';
 		} else {
 			echo "查无此狗";
 		}
@@ -124,11 +124,21 @@ class UserController extends Controller
 	// 修改前显示用户数据
 	public function edit($id)
 	{
+		// $user = User::get($id);
+		// $this->assign('id', $user->id);
+		// $this->assign('nickname', $user->nickname);
+		// $this->assign('email', $user->email);
+		// $this->assign('birthday', $user->birthday);
+		// return $this->fetch();
+
 		$user = User::get($id);
 		$this->assign('id', $user->id);
 		$this->assign('nickname', $user->nickname);
 		$this->assign('email', $user->email);
 		$this->assign('birthday', $user->birthday);
+		$list = Classes::all();
+		$this->assign('list', $list);
+		$this->assign('user',$user);
 		return $this->fetch();
 
 	}
@@ -151,6 +161,7 @@ class UserController extends Controller
 		$user->nickname =$request->post('nickname');
 		$user->email = $request->post('email');
 		$user->birthday =strtotime($request->post('birthday'));
+		$user->classes_id = $request->post('classes_id');
 		$user->save();
 		return '更新用户成功';
 	}

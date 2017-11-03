@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	ID：{$user.id}<br/>
+	昵称：{$user.nickname}<br/>
+	邮箱：{$user.email}<br/>
+	生日：{$user.birthday}<br/>
+	班级：{$user->classes->year.$user->classes->major.$user->classes->subclass}<br/>
+	<a href="/user/edit/{$user.id}">编辑</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="/user/delete/{$user.id}">删除</a><br>
+</body>
+</html>

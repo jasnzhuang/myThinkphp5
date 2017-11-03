@@ -39,5 +39,7 @@ return [
 	'user/:id' => 'index/user/read',
 	'user' => 'index/user/index',
 	'user/page/:page' => 'index/user/index?page=:page',
+	'blog/add' => 'blog/index/add',
+	'blog/user/:id' => 'blog/index/user?id=:id',
 
 ];

@@ -5,14 +5,19 @@
 	<title>Document</title>
 </head>
 <body>
-	<form action="/user/update/{$id}" method="post">
-	<label for="nickname">姓名</label>
-	<input type="text" name="nickname" id="nickname" value="{$nickname}"><br>
-	<label for="email">邮箱地址</label>
-	<input type="text" name="email" id="email" value="{$email}"><br>
-	<label for="birthday">生日（格式必须为：1999-9-29）</label>
-	<input type="text" name="birthday" id="birthday" value="{$birthday}"><br>
-	
+	<form action="/user/update/{$user.id}" method="post">
+		<label for="nickname">姓名</label>
+		<input type="text" name="nickname" id="nickname" value="{$user.nickname}"><br>
+		<label for="email">邮箱地址</label>
+		<input type="text" name="email" id="email" value="{$user.email}"><br>
+		<label for="birthday">生日（格式必须为：1999-9-29）</label>
+		<input type="text" name="birthday" id="birthday" value="{$user.birthday}"><br>
+		
+		<select name="classes_id" id="classes_id">
+			{volist name="list" id="classes"}
+			<option value="{$classes.id}">{$classes.year.$classes.major.$classes.subclass}</option>
+			{/volist}
+		</select>
 		<input type="submit" value="确认编辑">
 	</form>
 </body>
