@@ -36,6 +36,8 @@ return [
 	'user/edit/:id' => 'index/user/edit',
 	'user/update/:id' => 'index/user/update?id=:id',
 	'user/delete/:id' => 'index/user/delete',
+	'user/test1/:id' => 'index/user/test1?id=:id',
+	'user/test2/:id' => 'index/user/test2',
 	'user/:id' => 'index/user/read',
 	'user' => 'index/user/index',
 	'user/page/:page' => 'index/user/index?page=:page',
@@ -45,6 +47,12 @@ return [
 	'blog/edit/:id' => 'blog/index/edit',
 	'blog/update/:id' => 'blog/index/update?id=:id',
 	'blog/delete/:id' => 'blog/index/delete',
+	'blog/login' => 'blog/index/login',
+	'blog/doLogin' => 'blog/index/doLogin',
+	'blog/register' => 'blog/index/register',
+	'blog/doRegister' => 'blog/index/doRegister',
+	'blog/getUserInfo' => 'blog/index/getUserInfo',
+	'blog/getUserRole' => 'blog/index/getUserRole',
 	'blog/user/:id' => 'blog/index/user?id=:id',
 
 ];

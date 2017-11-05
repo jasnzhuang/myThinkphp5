@@ -188,4 +188,13 @@ class UserController extends Controller
 			return '删除的用户不存在';
 		}
 	}
+	public function test1($id)
+	{
+		echo $id;
+	}
+
+	public function test2($id)
+	{
+		echo $id;
+	}
 }
