@@ -62,9 +62,10 @@ class UserController extends Controller
 		$user->nickname = $request->post('nickname');
 		$user->email = $request->post('email');
 		$user->birthday = $request->post('birthday');
+		$user->sex = $request->post('sex');
 		$user->classes_id = $request->post('classes_id');
 		if ($user->save()) {
-			return '用户[ ' . $user->nickname . ':' . $user->id . ' ]新增成功';
+			return '用户[ ' . $user->nickname . ':' . $user->id . ':' . $user->sex . ' ]新增成功';
 		} else {
 			return $user->getError();
 		}
@@ -161,6 +162,7 @@ class UserController extends Controller
 		$user->nickname =$request->post('nickname');
 		$user->email = $request->post('email');
 		$user->birthday =strtotime($request->post('birthday'));
+		$user->sex = $request->post('sex');
 		$user->classes_id = $request->post('classes_id');
 		$user->save();
 		return '更新用户成功';

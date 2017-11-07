@@ -12,7 +12,10 @@
 		<input type="text" name="email" id="email" value="{$user.email}"><br>
 		<label for="birthday">生日（格式必须为：1999-9-29）</label>
 		<input type="text" name="birthday" id="birthday" value="{$user.birthday}"><br>
-		
+		<select name="sex" id="sex">
+			<option{if condition="$user.sex eq '男'"} selected="selected" {/if} value="男">男</option>
+			<option{if condition="$user.sex eq '女'"} selected="selected" {/if} value="女">女</option>
+		</select>
 		<select name="classes_id" id="classes_id">
 			{volist name="list" id="classes"}
 			<option value="{$classes.id}">{$classes.year.$classes.major.$classes.subclass}</option>
