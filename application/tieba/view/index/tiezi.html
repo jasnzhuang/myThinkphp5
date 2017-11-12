@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>贴子列表</title>
+	<link rel="stylesheet" href="/static/bootstrap/css/bootstrap.min.css" />
+</head>
+<body>
+	<div class="container">
+	<h2>贴子列表</h2>
+	{volist name="contents" id="content"}
+	{if condition="$content.id eq $tieziid"}
+	标&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;题：
+	{$content.title}<br/>
+	{/if}
+	{if condition="$content.id neq $tieziid"}
+	回复内容：
+	{else/}
+	内&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;容：
+	{/if}
+	{$content.content}<br/>
+	日&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;期：
+	{$content.postdate}<br/>
+	<a href="/tieba/reply"></a>
+	------------------------<br/>
+	{/volist}
+
+	</div>
+</body>
+</html>

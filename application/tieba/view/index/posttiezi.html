@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<h2>发布新帖on{$tieba_id}</h2>
+		<form action="/tieba/doposttiezi/{$tieba_id}" method="post">
+		<input type="text" name="title" id="title">
+		<input type="text" name="content" id="content">
+		<input type="hidden" name="tieba_id" id="tieba_id" value="{$tieba_id}">
+		<input type="submit" value="发布">
+	</form>
+</body>
+</html>

@@ -2,7 +2,7 @@
 namespace app\blog\model;
 
 use think\Model;
-
+use think\Validate;
 class User extends Model
 {
 	public function isValid()

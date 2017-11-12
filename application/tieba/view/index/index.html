@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>贴吧列表</title>
+	<link rel="stylesheet" href="/static/bootstrap/css/bootstrap.min.css" />
+</head>
+<body>
+	<div class="container">
+	<h2>贴吧列表（{$tiebas->total()}）</h2>
+	{volist name="tiebas" id="tieba"}
+	<a href="tieba/ba/{$tieba.id}">{$tieba.baname}</a><br>
+	------------------------<br/>
+	{/volist}
+	{$tiebas->render()}
+	</div>
+</body>
+</html>

@@ -8,6 +8,18 @@
 // +----------------------------------------------------------------------
 // | Author: liu21st <liu21st@gmail.com>
 // +----------------------------------------------------------------------
+use think\Route;
+
+Route::get('/tieba$', 'tieba/index/index');
+Route::get('/tieba/ba/[:tieba_id]', 'tieba/index/ba');
+Route::get('/tieba/tiezi/:tieziid/[:tieba_id]','tieba/index/tiezi');
+Route::get('/tieba/createba$','tieba/index/createba');
+Route::post('/tieba/docreateba','tieba/index/docreateba');
+Route::get('/tieba/posttiezi/[:tieba_id]','tieba/index/posttiezi');
+Route::post('/tieba/doposttiezi/[:tieba_id]','tieba/index/doposttiezi');
+
+
+
 
 return [
 
@@ -16,43 +28,6 @@ return [
 		'name' => '\w+',
 		'id' => '\d+',
 	],
-	'[hello]'     => [
-		':id'   => ['index/hello', ['method' => 'get'], ['id' => '\d+']],
-		':name' => ['index/hello', ['method' => 'post']],
-	],
 
-    // 添加路由规则 路由到 index控制器的hello操作方法
-	'hello/[:name]$' => 'index/index/hello',
-
-	// 配合入门手册第六章模型
-	'user/index' => 'index/user/index',
-	'user/create' => 'index/user/create',
-	'user/add' => 'index/user/add',
-	'user/add/' => 'index/user/add',
-	'user/adddo' => 'index/user/adddo',
-	'user/adddo/' => 'index/user/adddo',
-	'user/addadd' => 'index/user/addadd',
-	'user/add_list' => 'index/user/addList',
-	'user/edit/:id' => 'index/user/edit',
-	'user/update/:id' => 'index/user/update?id=:id',
-	'user/delete/:id' => 'index/user/delete',
-	'user/test1/:id' => 'index/user/test1?id=:id',
-	'user/test2/:id' => 'index/user/test2',
-	'user/:id' => 'index/user/read',
-	'user' => 'index/user/index',
-	'user/page/:page' => 'index/user/index?page=:page',
-	'blog/add' => 'blog/index/add',
-	'blog/adddo' => 'blog/index/adddo',
-	'blog/:id' => 'blog/index/read',
-	'blog/edit/:id' => 'blog/index/edit',
-	'blog/update/:id' => 'blog/index/update?id=:id',
-	'blog/delete/:id' => 'blog/index/delete',
-	'blog/login' => 'blog/index/login',
-	'blog/doLogin' => 'blog/index/doLogin',
-	'blog/register' => 'blog/index/register',
-	'blog/doRegister' => 'blog/index/doRegister',
-	'blog/getUserInfo' => 'blog/index/getUserInfo',
-	'blog/getUserRole' => 'blog/index/getUserRole',
-	'blog/user/:id' => 'blog/index/user?id=:id',
 
 ];

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>贴子列表</title>
+	<link rel="stylesheet" href="/static/bootstrap/css/bootstrap.min.css" />
+</head>
+<body>
+	<div class="container">
+		
+	<h2>贴子列表（{$tiezis->total()}）</h2>
+	<h4><a href="/tieba/posttiezi/{$tieba_id}">发布新帖</a></h4>
+	{volist name="tiezis" id="tiezi"}
+	<a href="/tieba/tiezi/{$tiezi.id}">{$tiezi.title}</a><br>
+	------------------------<br/>
+	{/volist}
+	{$tiezis->render()}
+	</div>
+</body>
+</html>
